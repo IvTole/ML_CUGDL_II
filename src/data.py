@@ -2,7 +2,9 @@ import pandas as pd
 from src.config import DATA_PATH, FEATURES, TARGET
 
 class DataProcessing():
-
+    '''
+    Objetivo: Se encarga de la ingesta y preprocesamiento de datos
+    '''
     def __init__(self, n_samples: int = None):
         self.n_samples = n_samples
 
