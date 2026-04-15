@@ -9,8 +9,12 @@ class DataProcessing():
     def load_data(self):
         df = pd.read_csv(DATA_PATH, usecols=FEATURES+[TARGET])
         
-        if self.n_samples is not None:
+        if self.n_samples is not None and type(self.n_samples) != int:
+            raise ValueError("n_samples debe ser un valor entero o nulo")
+
+        if self.n_samples:
             df = df.sample(n=self.n_samples, random_state=42)
+
 
         return df
     
