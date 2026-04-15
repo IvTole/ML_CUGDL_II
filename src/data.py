@@ -3,11 +3,14 @@ from src.config import DATA_PATH, FEATURES, TARGET
 
 class DataProcessing():
 
-    def __init__(self, n_samples=None):
+    def __init__(self, n_samples: int = None):
         self.n_samples = n_samples
 
     def load_data(self):
         df = pd.read_csv(DATA_PATH, usecols=FEATURES+[TARGET])
+        
+        if self.n_samples is not None:
+            df = df.sample(n=self.n_samples, random_state=42)
 
         return df
     
